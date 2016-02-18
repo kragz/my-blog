@@ -1,17 +1,32 @@
+{% load staticfiles %}
 <html>
     <head>
-
-      <title>JV's blog </title>
-
+	    <title>JV's blog </title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="{% static 'css/blog.css' %}">  
     </head>
     <body>
-       <div>
+        <div class ="page-header">
+		    <h1><a href ="/">JV Blog</a></h1>
+		</div>
+	
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
             {% for post in posts %}
-            <p>Published date: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text| linebreaks }}</p>
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaks }}</p>
+                </div>
             {% endfor %}
-       </div>
+        </div>
+    </div>
+</div>
+       
     </body>
 
 </html>
